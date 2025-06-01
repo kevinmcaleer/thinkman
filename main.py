@@ -1,3 +1,6 @@
+import vosk
+
+
 def main():
     print("Hello from thinkman!")
 
