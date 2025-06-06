@@ -12,3 +12,4 @@ wheels/
 # MacOS files
 .DS_Store
 
+vosk*
