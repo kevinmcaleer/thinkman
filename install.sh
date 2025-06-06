@@ -13,3 +13,12 @@ echo "Vosk model downloaded and extracted."
 echo "installong PortAudio dependencies..."
 sudo apt update
 sudo apt install libportaudio2 portaudio19-dev espeak-ng -y
+
+# Install uv, create virtaul environment and install depenencies
+echo "Installing uv..."
+curl -LsSf https://astral.sh/uv/install.sh | sh
+
+
+echo "Creating virtual environment and installing dependencies..."
+uv venv venv
+uv pip install -r requirements.txt
