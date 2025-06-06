@@ -1,16 +1,18 @@
+""" Thinkman - A simple voice assistant using Vosk for speech recognition and Ollama for language generation. """
+
 import queue
 from time import sleep
 import json
+import subprocess
+import re
 import sounddevice as sd
 import vosk
 import pyttsx3
 import requests
 from requests.exceptions import RequestException
-import re
 
 PROMPT = "You are a helpful assistant. Answer the user's questions in a friendly and informative manner. "
 WELCOME_MESSAGE = "Hello! I am your virtual assistant. How can I help you today?"
-
 
 def remove_emojis(text):
     emoji_pattern = re.compile(
@@ -107,10 +109,13 @@ def speak(text):
         print("No text to speak.")
         return
     print(f"Ollama says: {text}")
-    tts.say(text)
-    tts.runAndWait()
-    tts.stop()  # Ensure TTS stops before next input
-    sleep(1)  # Small delay to ensure TTS finishes before next input
+
+    subprocess.run(['espeak-ng', text])
+
+    # tts.say(text)
+    # tts.runAndWait()
+    # tts.stop()  # Ensure TTS stops before next input
+    # sleep(1)  # Small delay to ensure TTS finishes before next input
 
 def main():
     print("Say something...")
