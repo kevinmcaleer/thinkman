@@ -28,3 +28,13 @@ else
 fi
 source venv/bin/activate
 uv pip install -r requirements.txt
+
+echo "Setting up Ollama..."
+
+docker compose up -d
+
+# Download deepseek-r1:1.5b
+echo "/bye" | docker exec ollama ollama run deepseek-r1:1.5b
+
+# Download tinyllama
+echo "/bye" | docker exec ollama ollama run tinyllama
