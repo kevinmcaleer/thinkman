@@ -20,5 +20,9 @@ curl -LsSf https://astral.sh/uv/install.sh | sh
 
 
 echo "Creating virtual environment and installing dependencies..."
+if [ ! -d "venv" ]; then
 uv venv venv
+else
+  echo "Virtual environment already exists."
+fi
 uv pip install -r requirements.txt
