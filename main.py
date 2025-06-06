@@ -109,7 +109,8 @@ def speak(text):
     print(f"Ollama says: {text}")
     tts.say(text)
     tts.runAndWait()
-    sleep(0.5)  # Small delay to ensure TTS finishes before next input
+    tts.stop()  # Ensure TTS stops before next input
+    # sleep(0.5)  # Small delay to ensure TTS finishes before next input
 
 def main():
     print("Say something...")
