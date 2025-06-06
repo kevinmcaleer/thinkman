@@ -12,4 +12,4 @@ fi
 echo "Vosk model downloaded and extracted."
 echo "installong PortAudio dependencies..."
 sudo apt update
-sudo apt install libportaudio2 portaudio19-dev -y
+sudo apt install libportaudio2 portaudio19-dev espeak-ng -y
