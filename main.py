@@ -1,5 +1,5 @@
 import queue
-import time
+from time import sleep
 import json
 import sounddevice as sd
 import vosk
@@ -9,6 +9,8 @@ from requests.exceptions import RequestException
 import re
 
 PROMPT = "You are a helpful assistant. Answer the user's questions in a friendly and informative manner. "
+WELCOME_MESSAGE = "Hello! I am your virtual assistant. How can I help you today?"
+
 
 def remove_emojis(text):
     emoji_pattern = re.compile(
@@ -86,7 +88,7 @@ def query_ollama(prompt, retries=3, timeout=10):
             print(f"Attempt {attempt} failed: {e}")
             if attempt < retries:
                 print("Retrying in 2 seconds...")
-                time.sleep(2)
+                sleep(2)
             else:
                 return "Sorry, I couldn't get a response from the language model."
 
@@ -107,9 +109,11 @@ def speak(text):
     print(f"Ollama says: {text}")
     tts.say(text)
     tts.runAndWait()
+    sleep(0.5)  # Small delay to ensure TTS finishes before next input
 
 def main():
     print("Say something...")
+    speak(WELCOME_MESSAGE)
     while True:
         spoken = recognize_speech()
         if not spoken:
