@@ -44,7 +44,8 @@ def clean_response(text):
 # Set up your paths
 VOSK_MODEL_PATH = "vosk-model-small-en-us-0.15"
 OLLAMA_URL = "http://localhost:11434/api/generate"
-OLLAMA_MODEL = "deepseek-r1:1.5b"  # or "deepseek-llm:7b" if installed
+# OLLAMA_MODEL = "deepseek-r1:1.5b"  # or "deepseek-llm:7b" if installed
+OLLAMA_MODEL = "tinyllama"  # or "llama3:8b" if installed
 
 # Initialize TTS engine
 tts = pyttsx3.init()
