@@ -17,11 +17,11 @@ sudo apt install libportaudio2 portaudio19-dev espeak-ng -y
 # Install uv, create virtaul environment and install depenencies
 echo "Installing uv..."
 curl -LsSf https://astral.sh/uv/install.sh | sh
-
+source $HOME/.local/bin/env
 
 echo "Creating virtual environment and installing dependencies..."
 if [ ! -d "venv" ]; then
-  source $HOME/.local/bin/env
+  
   uv venv venv
 else
   echo "Virtual environment already exists."
