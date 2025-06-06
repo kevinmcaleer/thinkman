@@ -70,7 +70,6 @@ def recognize_speech():
 
 def query_ollama(prompt, retries=3, timeout=10):
     print(f"Sending prompt to Ollama: {prompt}")
-    prompt = PROMPT + prompt  # Prepend the prompt to the user's input
     for attempt in range(1, retries + 1):
         try:
             response = requests.post(OLLAMA_URL, json={
