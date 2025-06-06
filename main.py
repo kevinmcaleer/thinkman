@@ -72,7 +72,7 @@ def recognize_speech():
                 pass  # Keep buffering input
 
 
-def query_ollama(prompt, retries=3, timeout=10):
+def query_ollama(prompt, retries=3, timeout=30):
     print(f"Sending prompt to Ollama: {prompt}")
     for attempt in range(1, retries + 1):
         try:
