@@ -21,7 +21,8 @@ curl -LsSf https://astral.sh/uv/install.sh | sh
 
 echo "Creating virtual environment and installing dependencies..."
 if [ ! -d "venv" ]; then
-uv venv venv
+  uv venv venv
+  source $HOME/.local/bin/env
 else
   echo "Virtual environment already exists."
 fi
