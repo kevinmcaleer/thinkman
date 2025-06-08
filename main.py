@@ -72,7 +72,6 @@ def recognize_speech():
             else:
                 pass  # Keep buffering input
 
-
 def query_ollama(prompt, retries=3, timeout=30):
     print(f"Sending prompt to Ollama: {prompt}")
     for attempt in range(1, retries + 1):
@@ -95,17 +94,8 @@ def query_ollama(prompt, retries=3, timeout=30):
             else:
                 return "Sorry, I couldn't get a response from the language model."
 
-# def query_ollama(prompt):
-#     print(f"Sending prompt to Ollama: {prompt}")
-#     response = requests.post(OLLAMA_URL, json={
-#         "model": OLLAMA_MODEL,
-#         "prompt": prompt,
-#         "stream": False
-#     })
-#     data = response.json()
-#     return data.get("response", "").strip()
-
 def speak(text):
+    """ Speak the given text using TTS engine. """
     if not text:
         print("No text to speak.")
         return
@@ -113,12 +103,8 @@ def speak(text):
 
     subprocess.run(['espeak-ng', text])
 
-    # tts.say(text)
-    # tts.runAndWait()
-    # tts.stop()  # Ensure TTS stops before next input
-    # sleep(1)  # Small delay to ensure TTS finishes before next input
-
 def main():
+    """ Main function to run the voice assistant. """
     print("Say something...")
     speak(WELCOME_MESSAGE)
     while True:
